@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api/products")
+@RestController()
+@RequestMapping("/api/products")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class ProductRestController {
 
@@ -37,9 +38,15 @@ public class ProductRestController {
         return ResponseEntity.ok("CREATE SUCCESS");
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@RequestBody ProductReq req, @PathVariable int id) {
+        productService.updateProduct(id, req);
+        return ResponseEntity.ok("UPDATE SUCCESS");
+    }
 
 
-    @DeleteMapping("/delete-product/{id}")
+
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable int id) {
         productRepository.deleteById(id);
         return ResponseEntity.ok("DELETE SUCCESS");

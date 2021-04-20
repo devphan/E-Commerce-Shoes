@@ -54,6 +54,7 @@ public class ProductServiceImpl implements ProductService {
             throw new NotFoundException("Product does not exists");
         }
         Product product = productFind.get();
+
         product.setName(req.getName());
         product.setPrice(req.getPrice());
         product.setDescription(req.getDescription());
