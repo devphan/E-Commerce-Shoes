@@ -8,12 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BrandController {
-    @Autowired
-    private BrandService brandService;
-
     @GetMapping("/brands")
-    public String getListBrand(Model model) {
-//        model.addAttribute("brands", brandService.findAll());
+    public String getListBrand() {
         return "/admin/brand/list";
     }
 }

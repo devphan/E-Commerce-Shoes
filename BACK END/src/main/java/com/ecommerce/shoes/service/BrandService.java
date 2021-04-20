@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface BrandService extends CrudInterface<Brand, Integer> {
+public interface BrandService extends CrudInterface<Brand> {
 
     @Override
     List<Brand> findAll();
@@ -16,11 +16,11 @@ public interface BrandService extends CrudInterface<Brand, Integer> {
     Brand insert(Brand entity);
 
     @Override
-    Brand findById(Integer id);
+    Brand findById(int id);
 
     @Override
-    void update(Integer i, Brand entity);
+    void update(int i, Brand entity);
 
     @Override
-    void delete(Integer id);
+    void delete(int id);
 }

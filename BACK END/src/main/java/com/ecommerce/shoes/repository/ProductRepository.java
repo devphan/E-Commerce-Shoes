@@ -11,4 +11,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT * FROM product p WHERE p.discount > 0", nativeQuery = true)
     List<Product> getListProductSale();
+
+
 }

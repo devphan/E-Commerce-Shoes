@@ -6,18 +6,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface CategoryService extends CrudInterface<Category, Integer> {
+public interface CategoryService extends CrudInterface<Category> {
 
     @Override
     List<Category> findAll();
 
+    @Override
+    Category findById(int id);
 
     @Override
     Category insert(Category entity);
 
     @Override
-    void update(Integer id,Category entity);
+    void update(int id,Category entity);
 
     @Override
-    void delete(Integer id);
+    void delete(int id);
 }

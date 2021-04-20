@@ -328,11 +328,8 @@
                 cache: false,
                 timeout: 1000000,
                 success: function (data, textStatus, jqXHR) {
-
                     $("#result").html(data);
                     $("input#insert-thumbnail").attr("value", data);
-
-
                     console.log("SUCCESS : ", data);
                     $("#upload-image").prop("disabled", false);
 

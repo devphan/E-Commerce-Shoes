@@ -53,12 +53,10 @@ public class Product {
     private List<Category> categories; //Sẽ nằm trong mappedBy = "";
 
 
-    public Product(String name, String image, long price, String description, Brand brand, List<Category> categories) {
-        this.name = name;
-        this.image = image;
-        this.price = price;
-        this.description = description;
-        this.brand = brand;
-        this.categories = categories;
-    }
+
+//    @PreRemove
+//    private void removeCategories() {
+//        this.categories.clear();
+//    }
+
 }

@@ -1,4 +1,4 @@
-package com.ecommerce.shoes.model.request;
+package com.ecommerce.shoes.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,21 +7,26 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class CreateProductReq {
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductDto {
+    private int id;
+
     private String name;
 
     private String image;
 
-    private long price;
-
     private String description;
 
-    private int brandId;
+    private String brand;
 
-    private ArrayList<Integer> categoryIds;
+    private ArrayList<String> categories;
+
+    private long price;
+
+    private int totalSold;
+
 
 }

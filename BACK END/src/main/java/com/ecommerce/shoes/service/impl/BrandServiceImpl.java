@@ -21,7 +21,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public Brand findById(Integer id) {
+    public Brand findById(int id) {
         return brandRepository.findById(id).get();
     }
 
@@ -31,7 +31,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void update(Integer id, Brand entity) {
+    public void update(int id, Brand entity) {
         Optional<Brand> result = brandRepository.findById(id);
         if (result.isEmpty()) {
             throw new NotFoundException("Brand does not exist");
@@ -45,7 +45,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(int id) {
         brandRepository.deleteById(id);
     }
 }

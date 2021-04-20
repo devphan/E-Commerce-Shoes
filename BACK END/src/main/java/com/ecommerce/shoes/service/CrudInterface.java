@@ -2,15 +2,15 @@ package com.ecommerce.shoes.service;
 
 import java.util.List;
 
-public interface CrudInterface<T, K> {
+public interface CrudInterface<T> {
 
     List<T> findAll();
 
-    T findById(K id);
+    T findById(int id);
 
     T insert (T entity);
 
-    void update(K id, T entity);
+    void update(int id, T entity);
 
-    void delete(K id);
+    void delete(int id);
 }

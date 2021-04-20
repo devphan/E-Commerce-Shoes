@@ -38,7 +38,7 @@
                 <span>Trở về</span>
             </a>
 
-            <button type="submit" class="btn btn-success">
+            <button type="submit" onclick="alertToastr()" class="btn btn-success">
                 <span class="fa fa-plus" style="margin-right:0.5rem;"></span>
                 <span>Thêm sản phẩm</span>
             </button>
@@ -95,7 +95,8 @@
                                         <label class="required-label" for="price">Giá bán (VNĐ)</label>
                                         <span class="invalid-feedback" id="invalid-feedback-price">Khoảng giá sản phẩm: 1.000 - 1.000.000.000</span>
                                     </div>
-                                    <input type="text" class="form-control text-price-input" id="price">
+                                    <input type="text" th:field="*{price}" class="form-control text-price-input"
+                                           id="price">
                                 </div>
                             </div>
                         </div>
@@ -108,11 +109,7 @@
                                 <div id="list-product-image" class="grid-list-img">
 
                                 </div>
-                                <!--                                <button type="button" class="btn btn-info" id="btn-upload-product-img"-->
-                                <!--                                        data-toggle="modal" data-target="#choose-img-modal">-->
-                                <!--                                    Chọn ảnh-->
-                                <!--                                </button>-->
-                                <input type="file" id="image-product" >
+                                <input type="file" id="image-product" th:field="*{image}" t>
                                 <a for="upload-thumbnail" id="upload-image" onclick="uploadFile()">
                                 <span class="btn btn-warning btn-upload-img"><i
                                         class="fas fa-upload"></i> Tải ảnh lên</span>
@@ -128,7 +125,6 @@
         </div>
     </form>
 
-    <th:block th:replace="~{fragment/choose_img_modal :: choose-img-modal}"></th:block>
 </main>
 
 <th:block id="js-resources">
@@ -147,13 +143,19 @@
                 }
             )
 
-
-
         })
+
+
         function uploadFile() {
-            let image ="/image/upload/" + $('input#image-product').val().replace(/^.*\\/, "");
+            let image = "/image/upload/" + $('input#image-product').val().replace(/^.*\\/, "");
             toastr.success("Tải ảnh lên thành công");
+
             console.log(image);
+            $('input#image-product').attr("value", image);
+        }
+
+        function alertToastr() {
+            toastr.success("Thêm sản phầm thành công");
         }
 
 

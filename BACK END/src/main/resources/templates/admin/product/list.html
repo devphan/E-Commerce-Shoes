@@ -75,35 +75,35 @@
                                 </th>
                             </tr>
                             <tr class="heading-search">
-                                <form method="GET" id="search-form">
-                                    <th>
-                                        <input type="text" name="id" id="id" class="form-control thuy-search-input">
-                                    </th>
-                                    <th>
-                                        <input type="text" name="name" id="name" class="form-control thuy-search-input">
-                                    </th>
-                                    <th>
-                                        <select name="brand" class="form-control thuy-search-select" id="brand">
-                                            <option value="">Tất cả</option>
-                                            <th:block th:each="brand : ${brands}">
-                                                <option th:value="${brand.id}" th:text="${brand.name}"></option>
-                                            </th:block>
-                                        </select>
-                                    </th>
-                                    <th>
-                                        <select name="category" class="form-control thuy-search-select" id="category">
-                                            <option value="">Tất cả</option>
-                                            <th:block th:each="category : ${categories}">
-                                                <option th:value="${category.id}" th:text="${category.name}"></option>
-                                            </th:block>
-                                        </select>
-                                    </th>
-                                    <th></th>
-                                    <th></th>
-                                    <input type="hidden" name="page" id="page">
-                                    <input type="hidden" name="order" id="order">
-                                    <input type="hidden" name="direction" id="direction">
-                                </form>
+<!--                                <form method="GET" id="search-form">-->
+<!--                                    <th>-->
+<!--                                        <input type="text" name="id" id="id" class="form-control thuy-search-input">-->
+<!--                                    </th>-->
+<!--                                    <th>-->
+<!--                                        <input type="text" name="name" id="name" class="form-control thuy-search-input">-->
+<!--                                    </th>-->
+<!--                                    <th>-->
+<!--                                        <select name="brand" class="form-control thuy-search-select" id="brand">-->
+<!--                                            <option value="">Tất cả</option>-->
+<!--                                            <th:block th:each="brand : ${brands}">-->
+<!--                                                <option th:value="${brand.id}" th:text="${brand.name}"></option>-->
+<!--                                            </th:block>-->
+<!--                                        </select>-->
+<!--                                    </th>-->
+<!--                                    <th>-->
+<!--                                        <select name="category" class="form-control thuy-search-select" id="category">-->
+<!--                                            <option value="">Tất cả</option>-->
+<!--                                            <th:block th:each="category : ${categories}">-->
+<!--                                                <option th:value="${category.id}" th:text="${category.name}"></option>-->
+<!--                                            </th:block>-->
+<!--                                        </select>-->
+<!--                                    </th>-->
+<!--                                    <th></th>-->
+<!--                                    <th></th>-->
+<!--                                    <input type="hidden" name="page" id="page">-->
+<!--                                    <input type="hidden" name="order" id="order">-->
+<!--                                    <input type="hidden" name="direction" id="direction">-->
+<!--                                </form>-->
                             </tr>
                             </thead>
                             <tbody>
@@ -115,11 +115,11 @@
                                     <td>
                                         <a th:href="@{/admin/products/{id}(id=${product.id})}" th:text="${product.name}"></a>
                                     </td>
-                                    <td th:text="${product.brand.name}"></td>
+                                    <td th:text="${product.brand}"></td>
                                     <td>
                                         <th:block th:each="category, i : ${product.categories}">
-                                            <span th:if="${i.first} == true" th:text="${category.name}"></span>
-                                            <span th:if="${i.first} == false" th:text="', ' + ${category.name}"></span>
+                                            <span th:if="${i.first} == true" th:text="${category}"></span>
+                                            <span th:if="${i.first} == false" th:text="', ' + ${category}"></span>
                                         </th:block>
                                     </td>
                                     <td class="text-right text-price" th:text="${product.price}"></td>
@@ -134,6 +134,8 @@
                     <nav aria-label="Page navigation">
                         <ul class="pagination" id="pagination"></ul>
                     </nav>
+
+
                 </div>
             </div>
         </div>
