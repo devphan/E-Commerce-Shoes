@@ -15,15 +15,22 @@ public interface ProductService {
 
     Page<Product> findAllPage(Pageable pageable);
 
+    List<Product> findAllByBrand(int id);
+
     List<Product> getListProductSale();
 
     List<Product> getListProductBestSeller();
+
+    Page<Product> findAllByNameContaining(String name, Pageable pageable);
 
     Product findById(int id);
 
     void saveProduct(ProductReq req);
 
     void updateProduct(int id, ProductReq req);
+
+    void removeProduct(int id);
+
 
 
 }

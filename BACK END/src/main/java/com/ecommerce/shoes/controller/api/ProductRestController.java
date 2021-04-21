@@ -15,8 +15,6 @@ import java.util.List;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class ProductRestController {
 
-    @Autowired
-    private ProductRepository productRepository;
 
     @Autowired
     private ProductService productService;
@@ -26,11 +24,6 @@ public class ProductRestController {
         return ResponseEntity.ok(productService.findAllProductInfo());
     }
 
-    @GetMapping("/sale")
-    public ResponseEntity<?> getListProductSale() {
-        List<Product> result = productService.getListProductSale();
-        return ResponseEntity.ok(result);
-    }
 
     @PostMapping("/create-product")
     public ResponseEntity<?> createProduct(ProductReq req) {
@@ -45,12 +38,18 @@ public class ProductRestController {
     }
 
 
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable int id) {
-        productRepository.deleteById(id);
+        productService.removeProduct(id);
         return ResponseEntity.ok("DELETE SUCCESS");
     }
+
+    @GetMapping("/search-by-brand/{id}")
+    public ResponseEntity<?> findByBrand(@PathVariable int id) {
+        List<Product> products = productService.findAllByBrand(id);
+        return  ResponseEntity.ok(products);
+    }
+
 
 
 }

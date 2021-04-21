@@ -53,9 +53,6 @@ public class BrandRestController {
         return ResponseEntity.ok("DELETE SUCCESS");
     }
 
-
-
-
     @GetMapping("/file/{filename}")
     public ResponseEntity<?> download(@PathVariable String filename) {
         File file = new File(UPLOAD_DIR + "/" + filename);

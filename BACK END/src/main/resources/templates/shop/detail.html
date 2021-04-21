@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/layout/layout :: main-fragment(
+                                                ~{:: title},
+                                                'short-header',
+                                                ~{:: #css-resources},
+                                                ~{:: #js-resources},
+                                                ~{:: #main-content}
+                                               )}">
+
+<head>
+    <title th:text="${product.name}"></title>
+
+    <th:block id="css-resources">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/components/header.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/components/products.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/components/index/product-showcase.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/components/product-details/product-info.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/components/product-details/size-choose.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/components/product-details/size-guide-table.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/except-home-page.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/product-details.css}"/>
+    </th:block>
+</head>
+<body>
+<main id="main-content">
+    <!-- Breadcrum Section-->
+    <div class="breadcrumb container"><a class="previous-page" href="./index.html">Trang ch&#x1EE7;</a><i
+            class="fas fa-chevron-right arrow"></i><a class="previous-page" href="./shop.html">S&#x1EA3;n ph&#x1EA9;m</a><i
+            class="fas fa-chevron-right arrow"></i><span class="current-page">T&ecirc;n s&#x1EA3;n ph&#x1EA9;m</span></div>
+
+    <!-- Products Content Section-->
+    <section class="product-content-wrapper container">
+        <div class="common-info">
+            <div class="name" th:text="${product.name}"></div>
+        </div>
+        <div class="main-info row">
+            <div class="product-image col-lg-6">
+                <div class="slider slider-for">
+                    <div class="img-zoom-container"><img class="img-fluid" th:src="${product.image}"
+                                                         alt="image-1" /></div>
+                </div>
+                <div class="slider slider-nav">
+                    <div><img class="img-fluid" th:src="@{/image/product-details-image/1.jpg}" alt="image-1" /></div>
+                    <div><img class="img-fluid" th:src="@{/image/product-details-image/2.jpg}" alt="image-1" /></div>
+                    <div><img class="img-fluid" th:src="@{/image/product-details-image/3.jpg}" alt="image-1" /></div>
+                    <div><img class="img-fluid" th:src="@{/image/product-details-image/4.jpg}" alt="image-1" /></div>
+                    <div><img class="img-fluid" th:src="@{/image/product-details-image/5.jpg}" alt="image-1" /></div>
+                </div>
+
+            </div>
+            <div class="product-info col-lg-6">
+                <div class="title h4">Mô tả sản phẩm</div>
+                <div class="desc" th:utext="${product.description}">
+
+                </div>
+                <div class="desc-sub"><span class="desc-sub-title">Hãng: </span><span th:text="${product.brand.name}"></span></div>
+                <div class="desc-sub"><span class="desc-sub-title">Đã bán: &ensp;</span><span th:text="${product.totalSold} + ' đôi'"></span></div>
+                <div class="btns">
+                    <div class="size-btn" data-toggle="modal" data-target="#sizeChooseModal">
+                        <button class="btn btn-primary size trans-btn"><span class="size-text">Size</span><span
+                                class="size-details">9US | 42.5VN | 26.2CM</span><i
+                                class="fas fa-chevron-down dropdown-arrow"></i></button>
+                    </div><a class="buy-btn" href="./buy-page.html">
+                    <button class="btn btn-primary buy red-btn">
+                        <div class="ask-text left-content">
+                            <div class="ask-desc sub-content">Giá bán ưu đãi</div>
+                            <div class="text-price main-content" th:text="${product.price}">9.555.000 &#x20AB;</div>
+                        </div>
+                        <div class="buy-text right-content">
+                            <div class="buy-now main-content">Mua ngay</div>
+                        </div>
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="break-section container-fluid"></div>
+    <div class="instagram-image container">
+        <div class="row">
+            <div class="col-12">
+                <div class="title">
+                    <h2 class="h2">H&igrave;nh ảnh on feet</h2>
+                    <p class="sub-title">H&atilde;y tag ch&uacute;ng t&ocirc;i @obostadium</p>
+                </div>
+                <div class="slide-btn"></div>
+            </div>
+        </div>
+        <div id="instafeed">
+            <div class="col-lg-3 instaimg">
+                <div class="instaimg-wrap">
+                    <img th:src="@{/image/onfeet/onfeet1.jpg}" alt="" class="img-fluid insta-img">
+                </div>
+            </div>
+            <div class="col-lg-3 instaimg">
+                <div class="instaimg-wrap">
+                    <img th:src="@{/image/onfeet/onfeet2.jpg}" alt="" class="img-fluid insta-img">
+                </div>
+            </div>
+            <div class="col-lg-3 instaimg">
+                <div class="instaimg-wrap">
+                    <img th:src="@{/image/onfeet/onfeet3.jpg}" alt="" class="img-fluid insta-img">
+                </div>
+            </div>
+            <div class="col-lg-3 instaimg">
+                <div class="instaimg-wrap">
+                    <img th:src="@{/image/onfeet/onfeet4.jpg}" alt="" class="img-fluid insta-img">
+                </div>
+            </div>
+            <div class="col-lg-3 instaimg">
+                <div class="instaimg-wrap">
+                    <img th:src="@{/image/onfeet/onfeet5.jpg}" alt="" class="img-fluid insta-img">
+                </div>
+            </div>
+            <div class="col-lg-3 instaimg">
+                <div class="instaimg-wrap">
+                    <img th:src="@{/image/onfeet/onfeet6.jpg}" alt="" class="img-fluid insta-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="break-section container-fluid"></div>
+    <section class="products-showcase container">
+        <div class="row">
+            <div class="title col-12">
+                <h2 class="h2">SẢN PHẨM LIÊN QUAN</h2>
+            </div>
+        </div>
+        <div class="row product-row d-flex justify-content-md-between">
+            <a class="product product-link position-relative" id="3" href="./product-details.html">
+                <div class="card">
+                    <img th:src="@{/image/product/asics/Asics-Gel-Lyte-III-Ronnie-Fieg-Super-Green.jpg}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Adidas Yeezy Boost 350 V2 Lundmark (Non</h5>
+                        <p class="price">7.200.000 ₫</p>
+                        <p class="card-text sold">Đã bán 12 đôi</p>
+                    </div>
+                </div>
+                <div class="shadow mx-auto position-absolute"></div>
+            </a>
+            <a class="product product-link position-relative" id="5" href="./product-details.html">
+                <div class="card">
+                    <img th:src="@{/image/product/adidas/Adidas-NMD-R1-Japan-Triple-White-Product.jpg}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Jordan 1 Retro Low OG SP Travis Scott</h5>
+                        <p class="price">5.200.000 ₫</p>
+                        <p class="card-text sold">Đã bán 122 đôi</p>
+                    </div>
+                </div>
+                <div class="shadow mx-auto position-absolute"></div>
+            </a>
+            <a class="product product-link position-relative" id="4" href="./product-details.html">
+                <div class="card">
+                    <img th:src="@{/image/product/asics/Asics-Gel-Lyte-III-Ronnie-Fieg-Super-Green.jpg}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Adidas Yeezy Boost 350 V2 Lundmark (Non</h5>
+                        <p class="price">7.200.000 ₫</p>
+                        <p class="card-text sold">Đã bán 58 đôi</p>
+                    </div>
+                </div>
+                <div class="shadow mx-auto position-absolute"></div>
+            </a>
+            <a class="product product-link position-relative" id="2" href="./product-details.html">
+                <div class="card">
+                    <img th:src="@{/image/product/asics/Asics-Gel-Lyte-III-Concepts-Boston-Tea-Party.jpg}" class="card-img-top"
+                         alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Air Jordan 1 Mid Yellow Toe Black</h5>
+                        <p class="price">1.500.000 ₫</p>
+                        <p class="card-text sold">Đã bán 85 đôi</p>
+                    </div>
+                </div>
+                <div class="shadow mx-auto position-absolute"></div>
+            </a>
+            <a class="product product-link position-relative" id="1" href="./product-details.html">
+                <div class="card">
+                    <img th:src="@{/image/product/asics/Asics-Gel-Lyte-III-Afew-Koi.jpg}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Nike SB Dunk Low Parran</h5>
+                        <p class="price">6.200.000 ₫</p>
+                        <p class="card-text sold">Đã bán 122 đôi</p>
+                    </div>
+                </div>
+                <div class="shadow mx-auto position-absolute"></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Modals-->
+    <th:block th:replace="~{fragment/size_choose_modal :: size-choose-modal}"></th:block>
+</main>
+
+<th:block id="js-resources">
+    <script th:src="@{/script/except-home-page.js}"></script>
+    <script th:src="@{/script/size-choose.js}"></script>
+    <script th:src="@{/script/product-details.js}"></script>
+    <script th:src="@{/vendor/zoom-master/jquery.zoom.min.js}" type="text/javascript"></script>
+    <script th:inline="javascript">
+
+    </script>
+</th:block>
+</body>
+</html>
+
+
+
+
+
+

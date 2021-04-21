@@ -263,6 +263,6 @@ function searchProductByKeyword() {
         toastr.warning("Vui lòng nhập từ khóa tìm kiếm");
         return
     }
-    location.href="/api/tim-kiem?keyword="+keyword;
+    location.href="/products?keyword="+keyword;
 }
 

@@ -45,6 +45,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Page<Product> findAllByNameContaining(String name, Pageable pageable) {
+        return productRepository.findAllByNameContaining(name, pageable);
+    }
+
+    @Override
     public List<Product> getListProductBestSeller() {
         return productRepository.getListProductBestSeller();
     }
@@ -70,7 +75,7 @@ public class ProductServiceImpl implements ProductService {
         product.setName(req.getName());
         product.setPrice(req.getPrice());
         product.setDescription(req.getDescription());
-//        product.setImage(req.getImage());
+        product.setImage(req.getImage());
 
         //Set Brand
         Brand brand = new Brand();
@@ -87,4 +92,13 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
+    @Override
+    public void removeProduct(int id) {
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Product> findAllByBrand(int id) {
+        return productRepository.findAllByBrand(id);
+    }
 }

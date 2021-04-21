@@ -9,6 +9,7 @@ import com.ecommerce.shoes.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,10 +38,19 @@ public class ProductController {
 //    }
 
     @GetMapping("")
-    public String getPageProduct(Model model, Pageable pageable) {
+    public String getPageProduct(Model model, @PageableDefault(size = 15) Pageable pageable) {
         Page<Product> result = productService.findAllPage(pageable);
         model.addAttribute("products", result);
         return "/admin/product/index";
+    }
+
+    @GetMapping("/{id}")
+    public String getDetailsOrUpdate(@PathVariable int id, Model model) {
+        Product product = productService.findById(id);
+        model.addAttribute("product", product);
+        model.addAttribute("brands", brandService.findAll());
+        model.addAttribute("categories", categoryService.findAll());
+        return "/admin/product/update";
     }
 
 
@@ -60,15 +70,6 @@ public class ProductController {
         productService.saveProduct(req);
         model.addAttribute("product", new ProductReq());
         return "redirect:/admin/products";
-    }
-
-    @GetMapping("/{id}")
-    public String getDetailsOrUpdate(@PathVariable int id, Model model) {
-        Product product = productService.findById(id);
-        model.addAttribute("product", product);
-        model.addAttribute("brands", brandService.findAll());
-        model.addAttribute("categories", categoryService.findAll());
-        return "/admin/product/update";
     }
 
 
