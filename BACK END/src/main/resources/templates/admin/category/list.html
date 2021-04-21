@@ -246,7 +246,7 @@
                     $('#delete-category-id').val('');
                 },
                 error: function(data) {
-                    toastr.warning(data.responseJSON.message);
+                    toastr.warning("Có sản phẩm thuộc danh mục này");
                 }
             });
         })

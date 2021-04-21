@@ -10,6 +10,8 @@ import com.ecommerce.shoes.model.request.ProductReq;
 import com.ecommerce.shoes.repository.ProductRepository;
 import com.ecommerce.shoes.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -43,6 +45,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getListProductBestSeller() {
+        return productRepository.getListProductBestSeller();
+    }
+
+    @Override
+    public Page<Product> findAllPage(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+
+    @Override
     public Product findById(int id) {
         return productRepository.findById(id).get();
     }
@@ -58,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
         product.setName(req.getName());
         product.setPrice(req.getPrice());
         product.setDescription(req.getDescription());
-        product.setImage("/image/upload/" + req.getImage());
+//        product.setImage(req.getImage());
 
         //Set Brand
         Brand brand = new Brand();

@@ -7,6 +7,8 @@ import com.ecommerce.shoes.service.BrandService;
 import com.ecommerce.shoes.service.CategoryService;
 import com.ecommerce.shoes.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,11 +29,18 @@ public class ProductController {
     private CategoryService categoryService;
 
     //Get all ProductInfor
+//    @GetMapping("")
+//    public String getListProduct(Model model) {
+//        List<ProductDto> result = productService.findAllProductInfo();
+//        model.addAttribute("products", result);
+//        return "/admin/product/list";
+//    }
+
     @GetMapping("")
-    public String getListProduct(Model model) {
-        List<ProductDto> result = productService.findAllProductInfo();
+    public String getPageProduct(Model model, Pageable pageable) {
+        Page<Product> result = productService.findAllPage(pageable);
         model.addAttribute("products", result);
-        return "/admin/product/list";
+        return "/admin/product/index";
     }
 
 

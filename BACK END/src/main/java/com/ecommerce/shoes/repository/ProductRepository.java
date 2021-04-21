@@ -9,8 +9,11 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Query(value = "SELECT * FROM product p WHERE p.discount > 0", nativeQuery = true)
+    @Query(value = "SELECT * FROM product p WHERE p.discount > 0 LIMIT 5", nativeQuery = true)
     List<Product> getListProductSale();
 
+    @Query(value = "SELECT * FROM product p ORDER BY p.total_sold DESC  LIMIT 5", nativeQuery = true)
+    List<Product> getListProductBestSeller();
 
 }
+

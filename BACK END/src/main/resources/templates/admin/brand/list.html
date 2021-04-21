@@ -292,7 +292,7 @@
                 })
                 // toastr.success("Cập nhật thành công");
                 $('#modal-update-brand').modal('hide');
-                location.href = "/brands";
+                location.href = "/admin/brands";
             })
         }
 
@@ -346,6 +346,9 @@
                         toastr.success("Xóa thành công");
                         $('#modal-delete-brand').modal('hide');
                         findAll();
+                    },
+                    error: function(data) {
+                        toastr.warning("Có sản phẩm đang thuộc nhãn hiệu này");
                     }
                 })
             })

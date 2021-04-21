@@ -117,11 +117,11 @@
                                         <a th:href="@{/admin/products/{id}(id=${product.id})}"
                                            th:text="${product.name}"></a>
                                     </td>
-                                    <td th:text="${product.brand}"></td>
+                                    <td th:text="${product.brand.name}"></td>
                                     <td>
                                         <th:block th:each="category, i : ${product.categories}">
-                                            <span th:if="${i.first} == true" th:text="${category}"></span>
-                                            <span th:if="${i.first} == false" th:text="', ' + ${category}"></span>
+                                            <span th:if="${i.first} == true" th:text="${category.name}"></span>
+                                            <span th:if="${i.first} == false" th:text="', ' + ${category.name}"></span>
                                         </th:block>
                                     </td>
                                     <td class="text-right text-price" th:text="${product.price}"></td>
@@ -132,17 +132,20 @@
                         </table>
                     </div>
 
-                    <!-- Pagination -->
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination" id="pagination"></ul>
-                    </nav>
-
-                    <div>
-                        <a th:href="@{'/products'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">«</a>
-                        <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
-                        <a th:href="@{'/admin/products'(page=${products.number + 1})}"
-                           th:if="${products.hasNext()}">»</a>
-                    </div>
+                    <ul class="pagination simple-pagination" id="pagination">
+                        <li class="disabled">
+                            <span class="current prev page-link">
+                            <a th:href="@{'/admin/products'(page=${products.number - 1})}">«</a>
+                        </span>
+                        </li>
+                        <li class="active"><span class="current page-link" th:text="${products.number + 1}"> </span>
+                        </li>
+                        <li class="disabled">
+                            <span class="current next page-link">
+                            <a th:href="@{'/admin/products'(page=${products.number + 1})}">»</a>
+                            </span>
+                        </li>
+                    </ul>
 
 
                 </div>
@@ -184,7 +187,7 @@
                 }
             }
 
-            pagination([[${totalPages}]], [[${currentPage}]]);
+            // pagination([[${totalPages}]], [[${currentPage}]]);
         });
     </script>
 </th:block>

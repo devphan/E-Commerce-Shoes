@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BrandController {
-    @GetMapping("/brands")
+    @GetMapping("/admin/brands")
     public String getListBrand() {
         return "/admin/brand/list";
     }
