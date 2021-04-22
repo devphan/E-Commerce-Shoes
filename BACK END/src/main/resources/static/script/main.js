@@ -143,7 +143,7 @@ $(document).on('click', function (e) {
 
     if (isValid == true) {
         req = {
-            full_name: fullNameValue,
+            name: fullNameValue,
             email: emailValue,
             password: passwordValue,
             phone: phoneValue
@@ -229,7 +229,7 @@ function signedValidate(status = false, fullname = '') {
   if (status == true) {
     isLogined = true;
     let signedLink = `
-  <a id="account-setting" class="nav-link account-setting" href="/tai-khoan">Xin chào ${fullname}</a>`;
+  <a id="account-setting" class="nav-link account-setting" href="/tai-khoan">Xin chào ADMIN</a>`;
 
     $('.account-setting').replaceWith(signedLink);
   } else {

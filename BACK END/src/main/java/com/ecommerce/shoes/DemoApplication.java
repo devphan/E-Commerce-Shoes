@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class DemoApplication implements CommandLineRunner {
+public class DemoApplication implements CommandLineRunner{ //implement CommandLineRunner
     @Autowired
     UserRepository userRepository;
 
@@ -24,13 +24,13 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User admin = new User();
-        admin.setName("Phan Văn Long");
-        admin.setEmail("admin@gmail.com");
-        admin.setRole("ADMIN");
-        admin.setPhone("0368280387");
-        admin.setPassword(passwordEncoder.encode("120601"));
-        userRepository.save(admin);
-        System.out.println(admin.toString());
+//        User admin = new User();
+//        admin.setName("Phan Văn Long");
+//        admin.setEmail("admin@gmail.com");
+//        admin.setRole("ADMIN");
+//        admin.setPhone("0368280387");
+//        admin.setPassword(passwordEncoder.encode("120601"));
+//        userRepository.save(admin);
+//        System.out.println(admin.toString());
     }
 }

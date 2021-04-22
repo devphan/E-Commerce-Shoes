@@ -38,7 +38,7 @@ public class ProductController {
 //    }
 
     @GetMapping("")
-    public String getPageProduct(Model model, @PageableDefault(size = 15) Pageable pageable) {
+    public String getPageProductAdmin(Model model, @PageableDefault(size = 15) Pageable pageable) {
         Page<Product> result = productService.findAllPage(pageable);
         model.addAttribute("products", result);
         return "/admin/product/index";
