@@ -1,19 +1,36 @@
 package com.ecommerce.shoes;
 
+import com.ecommerce.shoes.entity.User;
+import com.ecommerce.shoes.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class DemoApplication {
+public class DemoApplication implements CommandLineRunner {
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-//       String UPLOAD_DIR = System.getProperty("user.home") + "/upload";
-//        System.out.println(UPLOAD_DIR);
-//        String image = "E:\\E-commerce project\\Git repo\\e-commerce-shoes\\src\\main\\resources\\static\\image\\upload";
-//        System.out.println(image);
-
     }
 
 
+    @Override
+    public void run(String... args) throws Exception {
+        User admin = new User();
+        admin.setName("Phan Văn Long");
+        admin.setEmail("admin@gmail.com");
+        admin.setRole("ADMIN");
+        admin.setPhone("0368280387");
+        admin.setPassword(passwordEncoder.encode("120601"));
+        userRepository.save(admin);
+        System.out.println(admin.toString());
+    }
 }
