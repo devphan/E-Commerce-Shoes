@@ -126,39 +126,6 @@
 <th:block id="js-resources">
     <script type="text/javascript" th:src="@{/vendor/pagination/jquery.simplePagination.js}"></script>
     <script type="text/javascript" th:src="@{/adminlte/dist/js/table.js}"></script>
-    <script th:inline="javascript">
-        var id, name, brand, category, order, page, direction;
-
-        $(function () {
-            let vars = parseUrl();
-            id = vars["id"] || ""
-            name = vars["name"] || ""
-            brand = vars["brand"] || ""
-            category = vars["category"] || ""
-            order = vars["order"] || "product.created_at"
-            page = vars["page"] || "1"
-            direction = vars["direction"] || "desc"
-            $('#order').val(order)
-            $('#page').val(page)
-            $('#direction').val(direction)
-            $('#id').val(id)
-            $('#name').val(name)
-            $('#brand').val(brand)
-            $('#category').val(category)
-
-            if (order != "id") {
-                var th = $('.heading').find(`[data-order='` + order + `']`)
-                th.find('i').removeClass("fa-sort")
-                if (direction == "asc") {
-                    th.find('i').addClass("fas fa-sort-up")
-                } else {
-                    th.find('i').addClass("fas fa-sort-down")
-                }
-            }
-
-            // pagination([[${totalPages}]], [[${currentPage}]]);
-        });
-    </script>
 </th:block>
 </body>
 </html>

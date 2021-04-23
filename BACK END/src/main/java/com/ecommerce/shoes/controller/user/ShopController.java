@@ -1,6 +1,7 @@
 package com.ecommerce.shoes.controller.user;
 
 import com.ecommerce.shoes.entity.Product;
+import com.ecommerce.shoes.repository.ProductRepository;
 import com.ecommerce.shoes.service.BrandService;
 import com.ecommerce.shoes.service.CategoryService;
 import com.ecommerce.shoes.service.ProductService;
@@ -26,6 +27,9 @@ public class ShopController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping("")
     public String indexPage(Model model) {
@@ -60,6 +64,10 @@ public class ShopController {
 
     @GetMapping("/product-details/{id}")
     public String getDetailProduct(Model model, @PathVariable int id) {
+       Optional<Product> product = productRepository.findById(id);
+       if (product.isEmpty()) {
+           return "/error/404";
+       }
         model.addAttribute("product", productService.findById(id));
         return "shop/detail";
     }

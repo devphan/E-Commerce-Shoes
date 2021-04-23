@@ -19,9 +19,7 @@ public class ProductMapper {
         dto.setDescription(product.getDescription());
         dto.setPrice(product.getPrice());
         dto.setTotalSold(product.getTotalSold());
-        //Set Brand
         dto.setBrand(product.getBrand().getName());
-        //Set category
         ArrayList<String> categoriesName = new ArrayList<String>();
         for (Category category : product.getCategories()) {
             categoriesName.add(category.getName());
@@ -37,13 +35,12 @@ public class ProductMapper {
         product.setName(req.getName());
         product.setPrice(req.getPrice());
         product.setDescription(req.getDescription());
-        product.setImage("/image/upload/" + req.getImage());
+        product.setImage(req.getImage());
 
-        //Set Brand
         Brand brand = new Brand();
         brand.setId(req.getBrandId());
         product.setBrand(brand);
-        // Set category
+
         ArrayList<Category> categories = new ArrayList<Category>();
         for (Integer id : req.getCategoryIds()) {
             Category category = new Category();

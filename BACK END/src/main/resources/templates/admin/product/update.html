@@ -142,7 +142,7 @@
                                             </div>
                                         </div>
                                         <input type="file" id="image-product" th:value="${product.image}">
-                                        <a for="upload-thumbnail" id="upload-image" onclick="uploadFile()">
+                                        <a for="upload-thumbnail" id="upload-image" onclick="updateImage()">
                                             <span class="btn btn-warning btn-upload-img">
                                             <i class="fas fa-upload"></i> Tải ảnh lên</span>
                                         </a>
@@ -207,6 +207,9 @@
         function removeProductImage(btn) {
             $(btn).parent().remove();
         }
+        function updateImage() {
+            toastr.success("Tải ảnh lên thành công");
+        }
 
         $('.btn-update-product').click(function () {
             let name = $('#name').val();
@@ -255,6 +258,10 @@
                 },
             });
         })
+
+
+
+
     </script>
 </th:block>
 </body>

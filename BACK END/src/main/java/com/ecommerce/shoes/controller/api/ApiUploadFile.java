@@ -14,9 +14,7 @@ import java.io.FileOutputStream;
 
 @RestController
 public class ApiUploadFile {
-//    private static String UPLOAD_DIR = System.getProperty("user.home") + "/upload";
-    private static String UPLOAD_DIR = "E:\\E-commerce project\\Git repo\\e-commerce-shoes\\src\\main\\resources\\static\\image\\upload";
-
+    private static String UPLOAD_DIR = System.getProperty("user.home") + "/upload";
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@ModelAttribute UploadForm uploadForm) {

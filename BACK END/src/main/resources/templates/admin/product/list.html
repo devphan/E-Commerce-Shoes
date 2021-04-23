@@ -75,35 +75,7 @@
                                 </th>
                             </tr>
                             <tr class="heading-search">
-                                <!--                                <form method="GET" id="search-form">-->
-                                <!--                                    <th>-->
-                                <!--                                        <input type="text" name="id" id="id" class="form-control thuy-search-input">-->
-                                <!--                                    </th>-->
-                                <!--                                    <th>-->
-                                <!--                                        <input type="text" name="name" id="name" class="form-control thuy-search-input">-->
-                                <!--                                    </th>-->
-                                <!--                                    <th>-->
-                                <!--                                        <select name="brand" class="form-control thuy-search-select" id="brand">-->
-                                <!--                                            <option value="">Tất cả</option>-->
-                                <!--                                            <th:block th:each="brand : ${brands}">-->
-                                <!--                                                <option th:value="${brand.id}" th:text="${brand.name}"></option>-->
-                                <!--                                            </th:block>-->
-                                <!--                                        </select>-->
-                                <!--                                    </th>-->
-                                <!--                                    <th>-->
-                                <!--                                        <select name="category" class="form-control thuy-search-select" id="category">-->
-                                <!--                                            <option value="">Tất cả</option>-->
-                                <!--                                            <th:block th:each="category : ${categories}">-->
-                                <!--                                                <option th:value="${category.id}" th:text="${category.name}"></option>-->
-                                <!--                                            </th:block>-->
-                                <!--                                        </select>-->
-                                <!--                                    </th>-->
-                                <!--                                    <th></th>-->
-                                <!--                                    <th></th>-->
-                                <!--                                    <input type="hidden" name="page" id="page">-->
-                                <!--                                    <input type="hidden" name="order" id="order">-->
-                                <!--                                    <input type="hidden" name="direction" id="direction">-->
-                                <!--                                </form>-->
+
                             </tr>
                             </thead>
                             <tbody>
@@ -154,39 +126,6 @@
 <th:block id="js-resources">
     <script type="text/javascript" th:src="@{/vendor/pagination/jquery.simplePagination.js}"></script>
     <script type="text/javascript" th:src="@{/adminlte/dist/js/table.js}"></script>
-    <script th:inline="javascript">
-        var id, name, brand, category, order, page, direction;
-
-        $(function () {
-            let vars = parseUrl();
-            id = vars["id"] || ""
-            name = vars["name"] || ""
-            brand = vars["brand"] || ""
-            category = vars["category"] || ""
-            order = vars["order"] || "product.created_at"
-            page = vars["page"] || "1"
-            direction = vars["direction"] || "desc"
-            $('#order').val(order)
-            $('#page').val(page)
-            $('#direction').val(direction)
-            $('#id').val(id)
-            $('#name').val(name)
-            $('#brand').val(brand)
-            $('#category').val(category)
-
-            if (order != "id") {
-                var th = $('.heading').find(`[data-order='` + order + `']`)
-                th.find('i').removeClass("fa-sort")
-                if (direction == "asc") {
-                    th.find('i').addClass("fas fa-sort-up")
-                } else {
-                    th.find('i').addClass("fas fa-sort-down")
-                }
-            }
-
-            pagination([[${totalPages}]], [[${currentPage}]]);
-        });
-    </script>
 </th:block>
 </body>
 </html>

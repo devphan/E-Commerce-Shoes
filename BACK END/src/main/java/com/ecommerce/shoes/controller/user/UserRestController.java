@@ -44,7 +44,6 @@ public class UserRestController {
     }
 
 
-
     @PostMapping("/api/login")
     public LoginResponse authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
