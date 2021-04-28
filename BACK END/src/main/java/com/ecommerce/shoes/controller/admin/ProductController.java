@@ -68,7 +68,6 @@ public class ProductController {
     @PostMapping("/create")
     public String createProduct(@ModelAttribute("product") ProductReq req, Model model) {
         productService.saveProduct(req);
-        model.addAttribute("product", new ProductReq());
         return "redirect:/admin/products";
     }
 
